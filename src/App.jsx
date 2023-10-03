@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './styles.css'
 import { NewTodoForm } from './NewTodoForm'
 import { TodoList } from './TodoList'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function App() {
   const [todos, setTodos] = useState([]) // sets todos state to [] initially
@@ -17,19 +18,9 @@ export default function App() {
   }, [])
 
 
-  function getCrypto() {
-    try {
-      return window.crypto
-    }
-    catch {
-      return crypto
-    }
-  }
-
-
   function addTodo(title) {
     let todo = {
-      id: getCrypto().randomUUID(),
+      id: uuidv4(),
       title,
       completed: false
     }
