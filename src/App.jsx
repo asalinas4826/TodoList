@@ -17,9 +17,19 @@ export default function App() {
   }, [])
 
 
+  function getCrypto() {
+    try {
+      return window.crypto
+    }
+    catch {
+      return crypto
+    }
+  }
+
+
   function addTodo(title) {
     let todo = {
-      id: crypto.randomUUID(),
+      id: getCrypto().randomUUID(),
       title,
       completed: false
     }
